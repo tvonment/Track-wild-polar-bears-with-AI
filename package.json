@@ -1,0 +1,23 @@
+{
+  "name": "Track-wild-polar-bears-with-AI",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tvonment/Track-wild-polar-bears-with-AI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tvonment/Track-wild-polar-bears-with-AI/issues"
+  },
+  "homepage": "https://github.com/tvonment/Track-wild-polar-bears-with-AI#readme",
+  "dependencies": {
+    "azure-storage": "^2.10.3"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "bindings": [
+    {
+      "name": "myBlob",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "photos/{name}",
+      "connection": "polarbaersthomas_STORAGE"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+az login
+az account set --subscription MPN150
+
+LOCATION="westeurope"
+RG_NAME="POLAR-BAER"
+ACCOUNT_NAME="polarbaersthomas"
+FUNCAPP_NAME="polarbaersthomas-funcapp"
+
+
+az group create --name $RG_NAME --location $LOCATION
+az storage account create --name $ACCOUNT_NAME --resource-group $RG_NAME --location $LOCATION --sku Standard_LRS
+az storage container create --name photos --account-name $ACCOUNT_NAME
+az storage account keys list --account-name $ACCOUNT_NAME
+
+export ACCOUNT_KEY="WucLKCUjEbd8MaaMCmk3XV0pKJMQgo8Tdr1R+dYTvz+UE0zLYxpRicgwW7YQC7U0SXegOJJ9Ln8aykg2G4yzsw=="
+export ACCOUNT_NAME="polarbaersthomas"
+
+az functionapp create -g $RG_NAME --name $FUNCAPP_NAME -s $ACCOUNT_NAME --os-type Windows --runtime node --runtime-version 12 --consumption-plan-location $LOCATION --functions-version 3
+
+SERVER_NAME="polarbaersthomas-dbserver"
+ADMIN_USERNAME="adminuser"
+ADMIN_PASSWORD="Pa396w0rd1234"
+DATABASE_NAME="polarbaerdb"
+
+az sql server create --name $SERVER_NAME --resource-group $RG_NAME --location $LOCATION --admin-user $ADMIN_USERNAME --admin-password $ADMIN_PASSWORD
+az sql db create --resource-group $RG_NAME --server $SERVER_NAME --name $DATABASE_NAME --service-objective S0
